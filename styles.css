@@ -1,0 +1,789 @@
+/* ==========================================================================
+   styles.css - Gaya Visual Modern & Aksesibilitas Ramah Lansia AnatomiSehat
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. ROOT VARIABLES & FONT SCALING
+   -------------------------------------------------------------------------- */
+:root {
+  --base-font-size: 16px;
+  --color-primary: #0d9488;
+  --color-primary-dark: #0f766e;
+  --color-primary-light: #ccfbf1;
+  --organ-glow: rgba(13, 148, 136, 0.6);
+  --organ-glow-alert: rgba(239, 68, 68, 0.7);
+}
+
+html {
+  font-size: var(--base-font-size);
+  scroll-behavior: smooth;
+}
+
+/* Ukuran Teks untuk Lansia (Text Scaling) */
+html.font-size-sm {
+  --base-font-size: 15px;
+}
+
+html.font-size-md {
+  --base-font-size: 17px; /* Default disarankan */
+}
+
+html.font-size-lg {
+  --base-font-size: 19.5px; /* Ekstra besar untuk kenyamanan membaca */
+}
+
+/* Peningkatan jarak baris untuk keterbacaan lansia */
+p, li {
+  line-height: 1.68;
+}
+
+/* --------------------------------------------------------------------------
+   2. MODE KONTRAS TINGGI (HIGH CONTRAST MODE FOR ELDERLY)
+   -------------------------------------------------------------------------- */
+body.high-contrast {
+  background-color: #0b1120 !important;
+  color: #f8fafc !important;
+}
+
+body.high-contrast aside {
+  background-color: #000000 !important;
+  border-bottom: 2px solid #facc15 !important;
+  color: #ffffff !important;
+}
+
+body.high-contrast header,
+body.high-contrast nav,
+body.high-contrast .bg-white,
+body.high-contrast .bg-slate-50,
+body.high-contrast .bg-slate-100 {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #475569 !important;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast h4,
+body.high-contrast h5,
+body.high-contrast strong {
+  color: #ffffff !important;
+}
+
+body.high-contrast p,
+body.high-contrast span:not(.cat-indicator),
+body.high-contrast li {
+  color: #e2e8f0 !important;
+}
+
+body.high-contrast .border-slate-100,
+body.high-contrast .border-slate-200,
+body.high-contrast .border-slate-300 {
+  border-color: #475569 !important;
+}
+
+body.high-contrast .bg-amber-50,
+body.high-contrast .bg-amber-50\/90,
+body.high-contrast .bg-amber-50\/40 {
+  background-color: #292524 !important;
+  border-color: #f59e0b !important;
+}
+
+body.high-contrast .bg-rose-50,
+body.high-contrast .bg-rose-50\/80 {
+  background-color: #3f1218 !important;
+  border-color: #ef4444 !important;
+}
+
+body.high-contrast .bg-emerald-50,
+body.high-contrast .bg-emerald-50\/60 {
+  background-color: #064e3b !important;
+  border-color: #10b981 !important;
+}
+
+body.high-contrast .bg-teal-50,
+body.high-contrast .bg-teal-50\/80 {
+  background-color: #134e4a !important;
+  border-color: #2dd4bf !important;
+}
+
+body.high-contrast .bg-cyan-100,
+body.high-contrast .bg-cyan-50 {
+  background-color: #164e63 !important;
+  border-color: #06b6d4 !important;
+  color: #cffafe !important;
+}
+
+body.high-contrast .bg-indigo-100,
+body.high-contrast .bg-indigo-50,
+body.high-contrast .bg-indigo-50\/40 {
+  background-color: #312e81 !important;
+  border-color: #818cf8 !important;
+  color: #e0e7ff !important;
+}
+
+body.high-contrast .bg-purple-100,
+body.high-contrast .bg-purple-50,
+body.high-contrast .bg-purple-50\/40,
+body.high-contrast .bg-purple-50\/20,
+body.high-contrast .bg-purple-50\/30,
+body.high-contrast .bg-purple-50\/70,
+body.high-contrast .bg-purple-100\/70,
+body.high-contrast .bg-purple-100\/80,
+body.high-contrast .bg-purple-100\/50 {
+  background-color: #3b0764 !important;
+  border-color: #c084fc !important;
+  color: #f3e8ff !important;
+}
+
+body.high-contrast .text-purple-950,
+body.high-contrast .text-purple-900,
+body.high-contrast .text-purple-800,
+body.high-contrast .text-purple-700 {
+  color: #f5d0fe !important;
+}
+
+body.high-contrast input {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #94a3b8 !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. SYSTEM TABS & BUTTON STATES
+   -------------------------------------------------------------------------- */
+.sys-tab-btn {
+  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sys-tab-btn:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+.sys-tab-btn.active {
+  background-color: #0d9488;
+  color: #ffffff !important;
+  box-shadow: 0 4px 6px -1px rgba(13, 148, 136, 0.25);
+}
+
+.sys-tab-btn.active span:first-child {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+/* Category Filter Chips */
+.cat-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+  background-color: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cat-filter-btn:hover {
+  border-color: #0d9488;
+  color: #0f766e;
+  transform: translateY(-1px);
+}
+
+.cat-filter-btn.active {
+  background-color: #0f766e;
+  color: #ffffff;
+  border-color: #0f766e;
+  box-shadow: 0 2px 4px rgba(15, 118, 110, 0.2);
+}
+
+.cat-indicator {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  display: inline-block;
+}
+
+/* Gender Selector Buttons (Urology) */
+.gender-btn {
+  color: #475569;
+}
+
+.gender-btn.active {
+  background-color: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Disease selector button pills */
+.disease-tab-pill {
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1.5px solid #e2e8f0;
+  background-color: #f8fafc;
+  color: #334155;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.disease-tab-pill:hover {
+  border-color: #cbd5e1;
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+.disease-tab-pill.active {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  border-color: #0284c7;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.15);
+}
+
+/* Quick Organ Buttons */
+.quick-organ-pill {
+  padding: 0.35rem 0.7rem;
+  border-radius: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 1.5px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #475569;
+  transition: all 0.15s ease;
+}
+
+.quick-organ-pill:hover {
+  background-color: #f1f5f9;
+  border-color: #0d9488;
+  color: #0f766e;
+}
+
+.quick-organ-pill.active {
+  background-color: #0d9488;
+  border-color: #0d9488;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   4. INTERACTIVE SVG ORGAN STYLING & ANIMATIONS
+   -------------------------------------------------------------------------- */
+.organ-interactive {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center;
+}
+
+.organ-interactive:hover {
+  filter: drop-shadow(0 0 10px var(--organ-glow)) brightness(1.08);
+  transform: scale(1.02);
+}
+
+/* Organ Active State */
+.organ-interactive.is-selected {
+  filter: drop-shadow(0 0 14px var(--organ-glow)) brightness(1.12);
+  stroke: #0d9488 !important;
+  stroke-width: 3.5px !important;
+}
+
+/* Organ Dimmed when filtered by category */
+.organ-interactive.is-dimmed {
+  opacity: 0.28;
+  filter: grayscale(80%);
+}
+
+/* Organ Highlighted by Category Filter */
+.organ-interactive.is-category-match {
+  animation: gentlePulse 2.4s infinite ease-in-out;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.85)) brightness(1.08);
+  }
+}
+
+/* SVG Body Silhouette */
+.body-silhouette {
+  fill: #f8fafc;
+  stroke: #cbd5e1;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 2;
+}
+
+/* SVG Pin & Label Callouts */
+.organ-pin-line {
+  stroke: #94a3b8;
+  stroke-width: 1.5;
+  stroke-dasharray: 2 2;
+  transition: opacity 0.2s ease;
+}
+
+.organ-pin-badge {
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  fill: #334155;
+  user-select: none;
+  pointer-events: none;
+}
+
+.organ-pin-bg {
+  fill: #ffffff;
+  stroke: #cbd5e1;
+  stroke-width: 1;
+  rx: 6;
+  ry: 6;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08));
+}
+
+.labels-hidden .organ-pin-group {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   5. AUDIO WAVE ANIMATION (TEXT-TO-SPEECH)
+   -------------------------------------------------------------------------- */
+.tts-speaking {
+  animation: audioPulse 1.2s infinite ease-in-out;
+  background-color: #0f766e !important;
+}
+
+@keyframes audioPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(13, 148, 136, 0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. CUSTOM SCROLLBARS FOR SENIORS
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* --------------------------------------------------------------------------
+   7. PRINT FRIENDLY STYLES
+   -------------------------------------------------------------------------- */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt !important;
+  }
+
+  aside, header, nav, #svg-stage, #organ-quick-pills,
+  #category-filter-bar, footer, .gender-btn, #btn-toggle-labels,
+  #btn-speak-organ, #btn-print-summary, #search-input, #help-modal {
+    display: none !important;
+  }
+
+  #detail-panel {
+    width: 100% !important;
+    display: block !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. DEEP CLINICAL MODE STYLES & DOSSIER CARDS
+   -------------------------------------------------------------------------- */
+.deep-tab-btn {
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #475569;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.deep-tab-btn:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.deep-tab-btn.active {
+  background-color: #0f766e;
+  color: #ffffff;
+  border-color: #0f766e;
+  box-shadow: 0 1px 3px rgba(15, 118, 110, 0.25);
+}
+
+.deep-tab-btn.active i {
+  color: #ffffff !important;
+}
+
+/* Clinical Dossier Boxes */
+.clinical-card {
+  background: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  border: 1.5px solid #e2e8f0;
+  margin-bottom: 0.75rem;
+}
+
+.clinical-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+/* Beers Criteria Box */
+.beers-warning-box {
+  background: #fffbeb;
+  border: 1.5px solid #f59e0b;
+  border-left-width: 5px;
+  border-radius: 0.5rem;
+  padding: 0.85rem;
+}
+
+/* Diagnostic Matrix Table */
+.diag-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.diag-table th {
+  background: #f8fafc;
+  color: #334155;
+  font-weight: 700;
+  padding: 0.6rem;
+  text-align: left;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.diag-table td {
+  padding: 0.6rem;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: top;
+}
+
+.diag-table tr:hover td {
+  background-color: rgba(241, 245, 249, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   9. TABLE MATRIX PAGE STYLES (tabel-medis.html)
+   -------------------------------------------------------------------------- */
+.table-sys-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border-radius: 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #334155;
+  background-color: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.table-sys-filter-btn:hover {
+  background-color: #f1f5f9;
+  border-color: #0d9488;
+  color: #0f766e;
+}
+
+.table-sys-filter-btn.active {
+  background-color: #0f766e;
+  color: #ffffff !important;
+  border-color: #0f766e;
+  box-shadow: 0 2px 4px rgba(15, 118, 110, 0.25);
+}
+
+.table-sys-filter-btn.active i {
+  color: #ffffff !important;
+}
+
+body.high-contrast .table-sys-filter-btn {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #64748b !important;
+}
+
+body.high-contrast .table-sys-filter-btn.active {
+  background-color: #facc15 !important;
+  color: #000000 !important;
+  border-color: #facc15 !important;
+}
+
+body.high-contrast .diag-table th {
+  background-color: #1e293b !important;
+  color: #facc15 !important;
+  border-color: #475569 !important;
+}
+
+body.high-contrast .diag-table td {
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+body.high-contrast .diag-table tr:hover td {
+  background-color: rgba(51, 65, 85, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   10. MOBILE & TOUCH SCREEN OPTIMIZATIONS (RAMAH HANDPHONE & LANSIA)
+   -------------------------------------------------------------------------- */
+/* Touch Smooth Scrolling & Fast Tap */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
+button, a, .organ-interactive, .quick-organ-pill, .disease-tab-pill, .deep-tab-btn {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Hindari sticky hover bug pada layar sentuh ponsel */
+@media (hover: hover) {
+  .organ-interactive:hover {
+    filter: drop-shadow(0 0 10px var(--organ-glow)) brightness(1.08);
+    transform: scale(1.02);
+  }
+}
+
+@media (hover: none) {
+  .organ-interactive:active {
+    transform: scale(0.98);
+    filter: drop-shadow(0 0 12px var(--organ-glow)) brightness(1.1);
+  }
+}
+
+/* Responsivitas Layar Ponsel (Smartphones <= 640px) */
+@media (max-width: 640px) {
+  /* Tabel klinis di HP: minimal lebar agar kolom tetap terbaca lapang */
+  .diag-table {
+    min-width: 460px;
+  }
+
+  .diag-table th, 
+  .diag-table td {
+    padding: 0.5rem 0.55rem;
+    font-size: 0.8rem;
+  }
+
+  /* Ukuran tombol sentuh ramah jari lansia pada ponsel (Touch Targets) */
+  .quick-organ-pill {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.82rem;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .disease-tab-pill {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.82rem;
+    min-height: 38px;
+  }
+
+  .deep-tab-btn {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8rem;
+    min-height: 38px;
+  }
+
+  .cat-filter-btn {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.78rem;
+    min-height: 34px;
+  }
+
+  .table-sys-filter-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.78rem;
+    min-height: 36px;
+  }
+
+  /* Tooltip di HP terpusat */
+  #organ-hover-tooltip {
+    max-width: 85vw;
+    font-size: 0.75rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. INTER-SYSTEM CROSS-TALK HIGHLIGHTS & GLOWS
+   -------------------------------------------------------------------------- */
+.crosstalk-link-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+}
+
+#svg-stage .organ-interactive[data-organ-id="otak-besar"]:hover,
+#svg-stage .organ-interactive[data-organ-id="otak-kecil"]:hover,
+#svg-stage .organ-interactive[data-organ-id="batang-otak"]:hover,
+#svg-stage .organ-interactive[data-organ-id="medula-spinalis"]:hover,
+#svg-stage .organ-interactive[data-organ-id="saraf-tepi"]:hover {
+  filter: drop-shadow(0 0 12px rgba(6, 182, 212, 0.75)) brightness(1.12);
+}
+
+#svg-stage .organ-interactive[data-organ-id="otot-rangka"]:hover,
+#svg-stage .organ-interactive[data-organ-id="lemak-viseral"]:hover,
+#svg-stage .organ-interactive[data-organ-id="lemak-subkutan"]:hover {
+  filter: drop-shadow(0 0 12px rgba(225, 29, 72, 0.75)) brightness(1.12);
+}
+
+
+
+
+
+/* Hover Glow Effect untuk 12 Sistem Anatomi Lengkap */
+#svg-stage .organ-interactive[data-organ-id="tulang-leher"]:hover,
+#svg-stage .organ-interactive[data-organ-id="tulang-punggung"]:hover,
+#svg-stage .organ-interactive[data-organ-id="tulang-panggul"]:hover,
+#svg-stage .organ-interactive[data-organ-id="tulang-sendi-lutut"]:hover,
+#svg-stage .organ-interactive[data-organ-id="sendi-ekstremitas"]:hover {
+  filter: drop-shadow(0 0 12px rgba(100, 116, 139, 0.85)) brightness(1.18);
+}
+
+#svg-stage .organ-interactive[data-organ-id="jantung-koroner"]:hover,
+#svg-stage .organ-interactive[data-organ-id="ventrikel-jantung"]:hover,
+#svg-stage .organ-interactive[data-organ-id="sistem-konduksi-jantung"]:hover,
+#svg-stage .organ-interactive[data-organ-id="pembuluh-arteri"]:hover,
+#svg-stage .organ-interactive[data-organ-id="pembuluh-vena"]:hover {
+  filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.85)) brightness(1.18);
+}
+
+#svg-stage .organ-interactive[data-organ-id="kelenjar-tiroid"]:hover,
+#svg-stage .organ-interactive[data-organ-id="kelenjar-adrenal"]:hover,
+#svg-stage .organ-interactive[data-organ-id="kelenjar-pankreas-endokrin"]:hover {
+  filter: drop-shadow(0 0 12px rgba(13, 148, 136, 0.85)) brightness(1.18);
+}
+
+#svg-stage .organ-interactive[data-organ-id="ginjal"]:hover,
+#svg-stage .organ-interactive[data-organ-id="ureter"]:hover,
+#svg-stage .organ-interactive[data-organ-id="kandung-kemih"]:hover,
+#svg-stage .organ-interactive[data-organ-id="saluran-kemih-bawah"]:hover {
+  filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.85)) brightness(1.18);
+}
+
+#svg-stage .organ-interactive[data-organ-id="sumsum-tulang-imun"]:hover,
+#svg-stage .organ-interactive[data-organ-id="sistem-imun-penghubung"]:hover {
+  filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.85)) brightness(1.18);
+}
+
+#svg-stage .organ-interactive[data-organ-id="kelenjar-getah-bening"]:hover,
+#svg-stage .organ-interactive[data-organ-id="pembuluh-limfa"]:hover {
+  filter: drop-shadow(0 0 12px rgba(132, 204, 22, 0.85)) brightness(1.18);
+}
+
+#svg-stage .organ-interactive[data-organ-id="kulit-epidermis-dermis"]:hover,
+#svg-stage .organ-interactive[data-organ-id="folikel-dan-kuku"]:hover {
+  filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.85)) brightness(1.18);
+}
+
+
+/* ============================================================================
+   TOMBOL & GAYA VISUAL KHUSUS DETAIL HATI & SELANG HD
+   ============================================================================ */
+.view-mode-btn {
+  padding: 0.3rem 0.65rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: all 0.15s ease;
+  color: #475569;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.view-mode-btn:hover {
+  color: #0f172a;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.view-mode-btn.active {
+  background-color: #0f766e;
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.liver-proc-btn {
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  background-color: #ffffff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+.liver-proc-btn:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+.liver-proc-btn.active {
+  background-color: #0284c7;
+  color: #ffffff;
+  border-color: #0369a1;
+  box-shadow: 0 2px 5px rgba(2, 132, 199, 0.3);
+}
+
+/* Animasi Denyut Lampu Indikator Selang */
+@keyframes flowPulse {
+  0% { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.tube-flowing-animation {
+  stroke-dasharray: 6 3;
+  animation: flowPulse 1.2s linear infinite;
+}
